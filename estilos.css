@@ -16,36 +16,34 @@ header {
     flex-wrap: wrap;
 }
 
-.header-left {
-    flex-grow: 1;
+.logo-nombre {
+    display: flex;
+    flex-direction: column;
 }
 
 .universidad {
     margin: 0;
     font-size: 1.1em;
-    font-weight: normal;
     color: #c8e6c9;
+    font-weight: bold;
 }
 
 .nombre {
     margin: 5px 0 0 0;
-    font-size: 2.4em;
+    font-size: 2.6em;
     font-weight: bold;
     color: white;
 }
 
-.menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.menu {
     display: flex;
-    gap: 25px;
+    gap: 20px;
 }
 
 .menu a {
     color: white;
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.2em;
     text-decoration: none;
     transition: color 0.3s;
 }
