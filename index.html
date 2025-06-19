@@ -9,48 +9,69 @@
 <body>
 
 <header>
-    <h1>Jesús Egoavil Machado</h1>
-    <p>Estudiante de Ingeniería de Sistemas y Computación - UPLA</p>
+    <div class="logo">Jesús Egoavil Machado</div>
+    <nav class="menu">
+        <ul>
+            <li><a href="#" onclick="mostrarSeccion('inicio')">Inicio</a></li>
+            <li><a href="#" onclick="mostrarSeccion('tareas')">Tareas</a></li>
+        </ul>
+    </nav>
 </header>
 
 <div class="container">
 
-    <div class="bienvenida">
+    <!-- Sección de Bienvenida -->
+    <section id="inicio" class="seccion">
         <h2>Bienvenido</h2>
         <p>Hola, soy Jesús Egoavil Machado, estudiante de Ingeniería de Sistemas y Computación en la Universidad Peruana Los Andes (UPLA). Esta página contiene mis tareas semanales para consulta y descarga. ¡Gracias por visitar!</p>
-    </div>
+    </section>
 
-    <div class="semana">
-        <h2>Semana 9</h2>
-        <a class="link-tarea" href="LINK_SEMANA_9_VER" target="_blank">Ver Tarea</a>
-        <a class="link-tarea" href="LINK_SEMANA_9_DESCARGAR" download>Descargar Tarea</a>
-    </div>
+    <!-- Sección de Tareas -->
+    <section id="tareas" class="seccion" style="display: none;">
+        <h2>Mis Tareas</h2>
 
-    <div class="semana">
-        <h2>Semana 10</h2>
-        <a class="link-tarea" href="LINK_SEMANA_10_VER" target="_blank">Ver Tarea</a>
-        <a class="link-tarea" href="LINK_SEMANA_10_DESCARGAR" download>Descargar Tarea</a>
-    </div>
+        <div class="semana">
+            <h3>Semana 9</h3>
+            <a class="link-tarea" href="LINK_SEMANA_9_VER" target="_blank">Ver Tarea</a>
+            <a class="link-tarea" href="LINK_SEMANA_9_DESCARGAR" download>Descargar Tarea</a>
+        </div>
 
-    <div class="semana">
-        <h2>Semana 11</h2>
-        <a class="link-tarea" href="LINK_SEMANA_11_VER" target="_blank">Ver Tarea</a>
-        <a class="link-tarea" href="LINK_SEMANA_11_DESCARGAR" download>Descargar Tarea</a>
-    </div>
+        <div class="semana">
+            <h3>Semana 10</h3>
+            <a class="link-tarea" href="LINK_SEMANA_10_VER" target="_blank">Ver Tarea</a>
+            <a class="link-tarea" href="LINK_SEMANA_10_DESCARGAR" download>Descargar Tarea</a>
+        </div>
 
-    <div class="semana">
-        <h2>Semana 12</h2>
-        <a class="link-tarea" href="LINK_SEMANA_12_VER" target="_blank">Ver Tarea</a>
-        <a class="link-tarea" href="LINK_SEMANA_12_DESCARGAR" download>Descargar Tarea</a>
-    </div>
+        <div class="semana">
+            <h3>Semana 11</h3>
+            <a class="link-tarea" href="LINK_SEMANA_11_VER" target="_blank">Ver Tarea</a>
+            <a class="link-tarea" href="LINK_SEMANA_11_DESCARGAR" download>Descargar Tarea</a>
+        </div>
 
-    <div class="semana">
-        <h2>Semana 13</h2>
-        <a class="link-tarea" href="LINK_SEMANA_13_VER" target="_blank">Ver Tarea</a>
-        <a class="link-tarea" href="LINK_SEMANA_13_DESCARGAR" download>Descargar Tarea</a>
-    </div>
+        <div class="semana">
+            <h3>Semana 12</h3>
+            <a class="link-tarea" href="LINK_SEMANA_12_VER" target="_blank">Ver Tarea</a>
+            <a class="link-tarea" href="LINK_SEMANA_12_DESCARGAR" download>Descargar Tarea</a>
+        </div>
+
+        <div class="semana">
+            <h3>Semana 13</h3>
+            <a class="link-tarea" href="LINK_SEMANA_13_VER" target="_blank">Ver Tarea</a>
+            <a class="link-tarea" href="LINK_SEMANA_13_DESCARGAR" download>Descargar Tarea</a>
+        </div>
+    </section>
 
 </div>
+
+<script>
+    function mostrarSeccion(id) {
+        const secciones = document.querySelectorAll('.seccion');
+        secciones.forEach(seccion => {
+            seccion.style.display = 'none';
+        });
+        document.getElementById(id).style.display = 'block';
+    }
+</script>
 
 </body>
 </html>
