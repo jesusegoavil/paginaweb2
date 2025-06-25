@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-
 <header>
     <div class="logo-nombre">
         <p class="universidad">Universidad Peruana Los Andes</p>
@@ -18,9 +17,7 @@
         <a href="#" onclick="mostrarSeccion('tareas')">Tareas</a>
     </nav>
 </header>
-
 <div class="container">
-
     <!-- Sección de Bienvenida -->
     <section id="inicio" class="seccion">
         <div class="bienvenida">
@@ -28,42 +25,85 @@
             <p>Hola, soy Jesús Egoavil Machado, estudiante de Ingeniería de Sistemas y Computación en la Universidad Peruana Los Andes (UPLA). Esta página contiene mis tareas semanales para consulta y descarga. ¡Gracias por visitar!</p>
         </div>
     </section>
-
+    
     <!-- Sección de Tareas -->
     <section id="tareas" class="seccion" style="display: none;">
         <h2>Mis Tareas</h2>
-
+        
         <div class="semana">
             <h3>Semana 9</h3>
             <a class="link-tarea" href="LINK_SEMANA_9_VER" target="_blank">Ver Tarea</a>
             <a class="link-tarea" href="LINK_SEMANA_9_DESCARGAR" download>Descargar Tarea</a>
         </div>
-
+        
         <div class="semana">
             <h3>Semana 10</h3>
             <a class="link-tarea" href="https://docs.google.com/document/d/18HJ2wuNvlSpRAKlEM6eK9i-CafHGxNthsIbc0C2B-AM/edit?usp=sharing" target="_blank">Ver Tarea</a>
             <a class="link-tarea" href="tareas/Semana10.pdf" download>Descargar Tarea</a>
         </div>
-
+        
         <div class="semana">
             <h3>Semana 11</h3>
             <a class="link-tarea" href="https://docs.google.com/document/d/15Ts1oM4JUITDamd-B_QEI6VARvgT6HWYsXLpnDVCaYM/edit?usp=sharing" target="_blank">Ver Tarea</a>
             <a class="link-tarea" href="tareas/Semana11.pdf" download>Descargar Tarea</a>
         </div>
-
+        
+        <!-- Semana 12 con 3 módulos -->
         <div class="semana">
             <h3>Semana 12</h3>
-            <a class="link-tarea" href="https://docs.google.com/document/d/1FN6HUUoqcGU4rT2ZSpqc3vNwa2i4ZSXGRi90N0R2xIg/edit?usp=sharing" target="_blank">Ver Tarea</a>
-            <a class="link-tarea" href="tareas/semana12.pdf" download>Descargar Tarea</a>
+            <div class="modulos-container">
+                <div class="modulo">
+                    <h4>Módulo 1</h4>
+                    <a class="link-tarea" href="https://docs.google.com/document/d/1PjjpTOyOClLO-CpWYFEQwcNjUghF8PRja2vZMHxKe3M/edit?usp=sharing" target="_blank">Ver Módulo 1</a>
+                    <a class="link-tarea" href="tareas/semana12/Modulo1.pdf" download>Descargar Módulo 1</a>
+                </div>
+                <div class="modulo">
+                    <h4>Módulo 2</h4>
+                    <a class="link-tarea" href="LINK_SEMANA_12_MODULO_2_VER" target="_blank">Ver Módulo 2</a>
+                    <a class="link-tarea" href="tareas/semana12/modulo2.pdf" download>Descargar Módulo 2</a>
+                </div>
+                <div class="modulo">
+                    <h4>Módulo 3</h4>
+                    <a class="link-tarea" href="LINK_SEMANA_12_MODULO_3_VER" target="_blank">Ver Módulo 3</a>
+                    <a class="link-tarea" href="tareas/semana12/modulo3.pdf" download>Descargar Módulo 3</a>
+                </div>
+            </div>
         </div>
-
+        
+        <!-- Semana 13 con 2 módulos -->
         <div class="semana">
             <h3>Semana 13</h3>
-            <a class="link-tarea" href="LINK_SEMANA_13_VER" target="_blank">Ver Tarea</a>
-            <a class="link-tarea" href="LINK_SEMANA_13_DESCARGAR" download>Descargar Tarea</a>
+            <div class="modulos-container">
+                <div class="modulo">
+                    <h4>Módulo 1</h4>
+                    <a class="link-tarea" href="https://docs.google.com/presentation/d/1LlGv7CGVnDbIcrMuRFXA-p452YP1DkXvIPV3JNfYqoA/edit?usp=sharing" target="_blank">Ver Módulo 4</a>
+                    <a class="link-tarea" href="tareas/semana13/Modulo4.pdf" download>Descargar Módulo 1</a>
+                </div>
+                <div class="modulo">
+                    <h4>Módulo 2</h4>
+                    <a class="link-tarea" href="https://docs.google.com/presentation/d/1sQDy501wSI7GzO-qHtsXmScc1OcYcEikgsdhCscu1Jg/edit?usp=sharing" target="_blank">Ver Módulo 5</a>
+                    <a class="link-tarea" href="tareas/semana13/Modulo5.pdf" download>Descargar Módulo 2</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Semana 14 con 2 módulos -->
+        <div class="semana">
+            <h3>Semana 14</h3>
+            <div class="modulos-container">
+                <div class="modulo">
+                    <h4>Módulo 1</h4>
+                    <a class="link-tarea" href="LINK_SEMANA_14_MODULO_1_VER" target="_blank">Ver Módulo 1</a>
+                    <a class="link-tarea" href="tareas/semana14/modulo1.pdf" download>Descargar Módulo 1</a>
+                </div>
+                <div class="modulo">
+                    <h4>Módulo 2</h4>
+                    <a class="link-tarea" href="LINK_SEMANA_14_MODULO_2_VER" target="_blank">Ver Módulo 2</a>
+                    <a class="link-tarea" href="tareas/semana14/modulo2.pdf" download>Descargar Módulo 2</a>
+                </div>
+            </div>
         </div>
     </section>
-
 </div>
 
 <script>
@@ -75,6 +115,5 @@
         document.getElementById(id).style.display = 'block';
     }
 </script>
-
 </body>
 </html>
