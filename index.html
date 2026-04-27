@@ -4,7 +4,372 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tareas - Jesús Egoavil Machado</title>
-  <link rel="stylesheet" href="estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #161a23;
+      --surface2: #1e2330;
+      --border: #2a3040;
+      --accent: #4f8ef7;
+      --accent2: #7c5cfc;
+      --accent3: #3ecf8e;
+      --text: #e8ecf5;
+      --muted: #7a8299;
+      --gold: #f0b429;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Sora', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glow orbs */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(79,142,247,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(22,26,35,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo-nombre .universidad {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .logo-nombre h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    nav.menu {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    nav.menu a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.45rem 1rem;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+
+    nav.menu a:hover, nav.menu a.active {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(79,142,247,0.08);
+    }
+
+    /* ─── MAIN CONTAINER ─── */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .seccion { display: none; animation: fadeIn 0.3s ease; }
+    .seccion.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── BIENVENIDA ─── */
+    .bienvenida {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bienvenida::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+    }
+
+    .bienvenida h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text) 40%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bienvenida p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    /* ─── SECTION TITLE ─── */
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title span.icon {
+      font-size: 1.4rem;
+    }
+
+    /* ─── ACCORDION (UNIDADES) ─── */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .unidad {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+
+    .unidad:hover { border-color: #3a4560; }
+
+    .unidad-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.75rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .unidad-header:hover { background: rgba(255,255,255,0.03); }
+
+    .unidad-header.open { background: rgba(79,142,247,0.06); }
+
+    .unidad-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .unidad-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .u1 .unidad-badge { background: rgba(79,142,247,0.15); color: var(--accent); border: 1px solid rgba(79,142,247,0.3); }
+    .u2 .unidad-badge { background: rgba(124,92,252,0.15); color: var(--accent2); border: 1px solid rgba(124,92,252,0.3); }
+    .u3 .unidad-badge { background: rgba(62,207,142,0.15); color: var(--accent3); border: 1px solid rgba(62,207,142,0.3); }
+    .u4 .unidad-badge { background: rgba(240,180,41,0.15); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
+
+    .unidad-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .unidad-meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .chevron {
+      width: 22px;
+      height: 22px;
+      color: var(--muted);
+      transition: transform 0.3s, color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .unidad-header.open .chevron {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    /* ─── UNIDAD BODY ─── */
+    .unidad-body {
+      display: none;
+      padding: 0 1.75rem 1.75rem;
+    }
+
+    .unidad-body.open { display: block; animation: fadeIn 0.25s ease; }
+
+    .semanas-grid {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .semana-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .semana-card:hover {
+      border-color: #3a4560;
+      transform: translateX(3px);
+    }
+
+    .semana-info {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      min-width: 0;
+    }
+
+    .semana-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .semana-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ─── ACTION BUTTONS ─── */
+    .semana-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.4rem 0.8rem;
+      border-radius: 7px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+
+    .btn-ver {
+      background: rgba(79,142,247,0.1);
+      color: var(--accent);
+      border-color: rgba(79,142,247,0.25);
+    }
+    .btn-ver:hover {
+      background: rgba(79,142,247,0.2);
+      border-color: var(--accent);
+    }
+
+    .btn-dl {
+      background: rgba(62,207,142,0.1);
+      color: var(--accent3);
+      border-color: rgba(62,207,142,0.25);
+    }
+    .btn-dl:hover {
+      background: rgba(62,207,142,0.2);
+      border-color: var(--accent3);
+    }
+
+    .btn-yt {
+      background: rgba(255,70,70,0.1);
+      color: #ff6060;
+      border-color: rgba(255,70,70,0.25);
+    }
+    .btn-yt:hover {
+      background: rgba(255,70,70,0.2);
+      border-color: #ff6060;
+    }
+
+    /* SVG icons inline */
+    .icon-eye { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .icon-dl  { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .icon-yt  { width:13px; height:13px; fill:currentColor; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      header { padding: 1rem 1.2rem; flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+      .container { padding: 2rem 1rem; }
+      .semana-card { flex-direction: column; align-items: flex-start; }
+      .unidad-header { padding: 1rem 1.2rem; }
+      .unidad-body { padding: 0 1.2rem 1.2rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -31,70 +396,112 @@
 
     <!-- ── TAREAS ── -->
     <section id="tareas" class="seccion">
-      <h2>📚 Mis Tareas</h2>
+      <h2 class="section-title"><span class="icon">📚</span> Mis Tareas</h2>
 
       <div class="accordion">
 
         <!-- ══ UNIDAD 1 ══ -->
-        <div class="unidad">
+        <div class="unidad u1">
           <div class="unidad-header" onclick="toggleUnidad(this)">
             <div class="unidad-left">
-              <span class="unidad-badge u1">Unidad 1</span>
+              <span class="unidad-badge">Unidad 1</span>
               <div>
                 <div class="unidad-name">Primera Unidad</div>
                 <div class="unidad-meta">Semanas 01 – 04</div>
               </div>
             </div>
-            <span class="chevron">▼</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
           <div class="unidad-body">
             <div class="semanas-grid">
 
+              <!-- Semana 01 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 01</span>
                   <span class="semana-title">Semana 01</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGjh37ukPY/MzHNJTeMPH0zKxudSmZJfg/edit" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana01.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM01" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGjh37ukPY/MzHNJTeMPH0zKxudSmZJfg/edit" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana01.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM01" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 02 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 02</span>
                   <span class="semana-title">Semana 02</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGnfLqtzO8/0IwuPNOQxRXaf1nwmh4OHw/edit" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana02.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM02" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGnfLqtzO8/0IwuPNOQxRXaf1nwmh4OHw/edit" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana02.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM02" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 03 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 03</span>
                   <span class="semana-title">Semana 03</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/spreadsheets/d/1pBVAdYDe_Jije_1IUAO7YLJ994ycCLcqDv8tEFynF6I/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana03.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM03" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://docs.google.com/spreadsheets/d/1pBVAdYDe_Jije_1IUAO7YLJ994ycCLcqDv8tEFynF6I/edit?usp=sharing" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana03.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM03" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 04 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 04</span>
                   <span class="semana-title">Semana 04</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGnfLgS0sw/GyZI0Tyas3-sNfnl8NsbRg/edit" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana04.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM04" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGnfLgS0sw/GyZI0Tyas3-sNfnl8NsbRg/edit" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana04.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM04" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
@@ -103,65 +510,107 @@
         </div>
 
         <!-- ══ UNIDAD 2 ══ -->
-        <div class="unidad">
+        <div class="unidad u2">
           <div class="unidad-header" onclick="toggleUnidad(this)">
             <div class="unidad-left">
-              <span class="unidad-badge u2">Unidad 2</span>
+              <span class="unidad-badge">Unidad 2</span>
               <div>
                 <div class="unidad-name">Segunda Unidad</div>
                 <div class="unidad-meta">Semanas 05 – 08</div>
               </div>
             </div>
-            <span class="chevron">▼</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
           <div class="unidad-body">
             <div class="semanas-grid">
 
+              <!-- Semana 05 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 05</span>
                   <span class="semana-title">Semana 05</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1KVs9Tq_eXkpS1V1orCkAST05p7E6MDx3Ktyq3MIgONo/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana05.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM05" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1KVs9Tq_eXkpS1V1orCkAST05p7E6MDx3Ktyq3MIgONo/edit?usp=sharing" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana05.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM05" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 06 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 06</span>
                   <span class="semana-title">Semana 06</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1PAje0EQbTvrVPCar_gvmrWc6VY61ZpEtpAnU4o3TGzI/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana06.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM06" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1PAje0EQbTvrVPCar_gvmrWc6VY61ZpEtpAnU4o3TGzI/edit?usp=sharing" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana06.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM06" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 07 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 07</span>
                   <span class="semana-title">Semana 07</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="TU_LINK_VER_SEM07" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana07.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM07" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="TU_LINK_VER_SEM07" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana07.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM07" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 08 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 08</span>
                   <span class="semana-title">Semana 08</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="TU_LINK_VER_SEM08" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana08.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM08" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="TU_LINK_VER_SEM08" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana08.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM08" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
@@ -170,65 +619,107 @@
         </div>
 
         <!-- ══ UNIDAD 3 ══ -->
-        <div class="unidad">
+        <div class="unidad u3">
           <div class="unidad-header" onclick="toggleUnidad(this)">
             <div class="unidad-left">
-              <span class="unidad-badge u3">Unidad 3</span>
+              <span class="unidad-badge">Unidad 3</span>
               <div>
                 <div class="unidad-name">Tercera Unidad</div>
                 <div class="unidad-meta">Semanas 09 – 12</div>
               </div>
             </div>
-            <span class="chevron">▼</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
           <div class="unidad-body">
             <div class="semanas-grid">
 
+              <!-- Semana 09 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 09</span>
                   <span class="semana-title">Semana 09</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="TU_LINK_VER_SEM09" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana09.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM09" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="TU_LINK_VER_SEM09" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana09.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM09" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 10 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 10</span>
                   <span class="semana-title">Semana 10</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/document/d/18HJ2wuNvlSpRAKlEM6eK9i-CafHGxNthsIbc0C2B-AM/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana10.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM10" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://docs.google.com/document/d/18HJ2wuNvlSpRAKlEM6eK9i-CafHGxNthsIbc0C2B-AM/edit?usp=sharing" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana10.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM10" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 11 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 11</span>
                   <span class="semana-title">Semana 11</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/document/d/15Ts1oM4JUITDamd-B_QEI6VARvgT6HWYsXLpnDVCaYM/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana11.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM11" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://docs.google.com/document/d/15Ts1oM4JUITDamd-B_QEI6VARvgT6HWYsXLpnDVCaYM/edit?usp=sharing" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana11.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM11" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 12 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 12</span>
                   <span class="semana-title">Semana 12</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1PjjpTOyOClLO-CpWYFEQwcNjUghF8PRja2vZMHxKe3M/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana12.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM12" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1PjjpTOyOClLO-CpWYFEQwcNjUghF8PRja2vZMHxKe3M/edit?usp=sharing" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana12.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM12" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
@@ -237,65 +728,107 @@
         </div>
 
         <!-- ══ UNIDAD 4 ══ -->
-        <div class="unidad">
+        <div class="unidad u4">
           <div class="unidad-header" onclick="toggleUnidad(this)">
             <div class="unidad-left">
-              <span class="unidad-badge u4">Unidad 4</span>
+              <span class="unidad-badge">Unidad 4</span>
               <div>
                 <div class="unidad-name">Cuarta Unidad</div>
                 <div class="unidad-meta">Semanas 13 – 16</div>
               </div>
             </div>
-            <span class="chevron">▼</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
           <div class="unidad-body">
             <div class="semanas-grid">
 
+              <!-- Semana 13 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 13</span>
                   <span class="semana-title">Semana 13</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/1LlGv7CGVnDbIcrMuRFXA-p452YP1DkXvIPV3JNfYqoA/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana13.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM13" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/1LlGv7CGVnDbIcrMuRFXA-p452YP1DkXvIPV3JNfYqoA/edit?usp=sharing" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana13.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM13" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 14 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 14</span>
                   <span class="semana-title">Semana 14</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/1eSyNkOjoK1OUecdtn-BxaFAkKSGUPj0Xgxpfz-4B5Rk/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana14.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM14" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/1eSyNkOjoK1OUecdtn-BxaFAkKSGUPj0Xgxpfz-4B5Rk/edit?usp=sharing" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana14.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM14" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 15 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 15</span>
                   <span class="semana-title">Semana 15</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/12wPHYyp9g6TdCpjm1EgUprfaaoii1DucTpWtOzmVGGE/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana15.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM15" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/12wPHYyp9g6TdCpjm1EgUprfaaoii1DucTpWtOzmVGGE/edit?usp=sharing" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana15.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM15" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
+              <!-- Semana 16 -->
               <div class="semana-card">
                 <div class="semana-info">
                   <span class="semana-num">SEM 16</span>
                   <span class="semana-title">Semana 16</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="TU_LINK_VER_SEM16" target="_blank">👁️ Ver PDF</a>
-                  <a class="btn btn-dl" href="tareas/Semana16.pdf" download>⬇️ Descargar</a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM16" target="_blank">▶ Ver Video</a>
+                  <a class="btn btn-ver" href="TU_LINK_VER_SEM16" target="_blank">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </a>
+                  <a class="btn btn-dl" href="tareas/Semana16.pdf" download>
+                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar
+                  </a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM16" target="_blank">
+                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                    Ver Video
+                  </a>
                 </div>
               </div>
 
@@ -319,8 +852,10 @@
     function toggleUnidad(header) {
       const body = header.nextElementSibling;
       const isOpen = body.classList.contains('open');
+      // Close all
       document.querySelectorAll('.unidad-body').forEach(b => b.classList.remove('open'));
       document.querySelectorAll('.unidad-header').forEach(h => h.classList.remove('open'));
+      // Open clicked if it was closed
       if (!isOpen) {
         body.classList.add('open');
         header.classList.add('open');
