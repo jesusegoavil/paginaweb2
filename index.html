@@ -29,7 +29,6 @@
       overflow-x: hidden;
     }
 
-    /* Background grid */
     body::before {
       content: '';
       position: fixed;
@@ -43,7 +42,6 @@
       z-index: 0;
     }
 
-    /* Glow orbs */
     body::after {
       content: '';
       position: fixed;
@@ -56,7 +54,6 @@
       z-index: 0;
     }
 
-    /* ─── HEADER ─── */
     header {
       position: relative;
       z-index: 10;
@@ -108,7 +105,6 @@
       background: rgba(79,142,247,0.08);
     }
 
-    /* ─── MAIN CONTAINER ─── */
     .container {
       position: relative;
       z-index: 1;
@@ -125,7 +121,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── BIENVENIDA ─── */
     .bienvenida {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -158,7 +153,6 @@
       font-size: 0.95rem;
     }
 
-    /* ─── SECTION TITLE ─── */
     .section-title {
       font-size: 1.6rem;
       font-weight: 700;
@@ -172,7 +166,6 @@
       font-size: 1.4rem;
     }
 
-    /* ─── ACCORDION (UNIDADES) ─── */
     .accordion {
       display: flex;
       flex-direction: column;
@@ -200,7 +193,6 @@
     }
 
     .unidad-header:hover { background: rgba(255,255,255,0.03); }
-
     .unidad-header.open { background: rgba(79,142,247,0.06); }
 
     .unidad-left {
@@ -249,7 +241,6 @@
       color: var(--accent);
     }
 
-    /* ─── UNIDAD BODY ─── */
     .unidad-body {
       display: none;
       padding: 0 1.75rem 1.75rem;
@@ -302,7 +293,6 @@
       text-overflow: ellipsis;
     }
 
-    /* ─── ACTION BUTTONS ─── */
     .semana-actions {
       display: flex;
       gap: 0.5rem;
@@ -324,6 +314,7 @@
       cursor: pointer;
       transition: all 0.18s;
       white-space: nowrap;
+      background: none;
     }
 
     .btn-ver {
@@ -356,12 +347,10 @@
       border-color: #ff6060;
     }
 
-    /* SVG icons inline */
     .icon-eye { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
     .icon-dl  { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
     .icon-yt  { width:13px; height:13px; fill:currentColor; }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 640px) {
       header { padding: 1rem 1.2rem; flex-direction: column; gap: 0.8rem; align-items: flex-start; }
       .container { padding: 2rem 1rem; }
@@ -379,8 +368,8 @@
       <h1 class="nombre">Jesús Egoavil Machado</h1>
     </div>
     <nav class="menu">
-      <a href="#" onclick="mostrarSeccion('inicio')" id="nav-inicio" class="active">Inicio</a>
-      <a href="#" onclick="mostrarSeccion('tareas')" id="nav-tareas">Tareas</a>
+      <a href="#" onclick="mostrarSeccion('inicio'); return false;" id="nav-inicio" class="active">Inicio</a>
+      <a href="#" onclick="mostrarSeccion('tareas'); return false;" id="nav-tareas">Tareas</a>
     </nav>
   </header>
 
@@ -424,13 +413,10 @@
                   <span class="semana-title">Semana 01</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="#" onclick="verPDF('tareas/semana1.pdf')">
-                      <svg class="icon-eye" viewBox="0 0 24 24">
-                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                             <circle cx="12" cy="12" r="3"/>
-                          </svg>
-                          Ver PDF
-                    </a>
+                  <button class="btn btn-ver" onclick="verPDF('tareas/semana1.pdf')">
+                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Ver PDF
+                  </button>
                   <a class="btn btn-dl" href="tareas/semana1.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -449,10 +435,10 @@
                   <span class="semana-title">Semana 02</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGnfLqtzO8/0IwuPNOQxRXaf1nwmh4OHw/edit" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana02.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana02.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -471,10 +457,10 @@
                   <span class="semana-title">Semana 03</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/spreadsheets/d/1pBVAdYDe_Jije_1IUAO7YLJ994ycCLcqDv8tEFynF6I/edit?usp=sharing" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana03.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana03.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -493,10 +479,10 @@
                   <span class="semana-title">Semana 04</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGnfLgS0sw/GyZI0Tyas3-sNfnl8NsbRg/edit" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana04.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana04.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -536,10 +522,10 @@
                   <span class="semana-title">Semana 05</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1KVs9Tq_eXkpS1V1orCkAST05p7E6MDx3Ktyq3MIgONo/edit?usp=sharing" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana05.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana05.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -558,10 +544,10 @@
                   <span class="semana-title">Semana 06</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1PAje0EQbTvrVPCar_gvmrWc6VY61ZpEtpAnU4o3TGzI/edit?usp=sharing" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana06.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana06.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -580,10 +566,10 @@
                   <span class="semana-title">Semana 07</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="TU_LINK_VER_SEM07" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana07.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana07.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -602,10 +588,10 @@
                   <span class="semana-title">Semana 08</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="TU_LINK_VER_SEM08" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana08.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana08.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -645,10 +631,10 @@
                   <span class="semana-title">Semana 09</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="TU_LINK_VER_SEM09" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana09.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana09.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -667,10 +653,10 @@
                   <span class="semana-title">Semana 10</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/document/d/18HJ2wuNvlSpRAKlEM6eK9i-CafHGxNthsIbc0C2B-AM/edit?usp=sharing" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana10.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana10.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -689,10 +675,10 @@
                   <span class="semana-title">Semana 11</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/document/d/15Ts1oM4JUITDamd-B_QEI6VARvgT6HWYsXLpnDVCaYM/edit?usp=sharing" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana11.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana11.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -711,10 +697,10 @@
                   <span class="semana-title">Semana 12</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1PjjpTOyOClLO-CpWYFEQwcNjUghF8PRja2vZMHxKe3M/edit?usp=sharing" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana12.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana12.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -754,10 +740,10 @@
                   <span class="semana-title">Semana 13</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/1LlGv7CGVnDbIcrMuRFXA-p452YP1DkXvIPV3JNfYqoA/edit?usp=sharing" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana13.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana13.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -776,10 +762,10 @@
                   <span class="semana-title">Semana 14</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/1eSyNkOjoK1OUecdtn-BxaFAkKSGUPj0Xgxpfz-4B5Rk/edit?usp=sharing" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana14.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana14.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -798,10 +784,10 @@
                   <span class="semana-title">Semana 15</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/12wPHYyp9g6TdCpjm1EgUprfaaoii1DucTpWtOzmVGGE/edit?usp=sharing" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana15.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana15.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -820,10 +806,10 @@
                   <span class="semana-title">Semana 16</span>
                 </div>
                 <div class="semana-actions">
-                  <a class="btn btn-ver" href="TU_LINK_VER_SEM16" target="_blank">
+                  <button class="btn btn-ver" onclick="verPDF('tareas/Semana16.pdf')">
                     <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     Ver PDF
-                  </a>
+                  </button>
                   <a class="btn btn-dl" href="tareas/Semana16.pdf" download>
                     <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Descargar
@@ -855,15 +841,20 @@
     function toggleUnidad(header) {
       const body = header.nextElementSibling;
       const isOpen = body.classList.contains('open');
-      // Close all
       document.querySelectorAll('.unidad-body').forEach(b => b.classList.remove('open'));
       document.querySelectorAll('.unidad-header').forEach(h => h.classList.remove('open'));
-      // Open clicked if it was closed
       if (!isOpen) {
         body.classList.add('open');
         header.classList.add('open');
       }
     }
+
+    function verPDF(ruta) {
+      const urlCompleta = window.location.origin + "/" + ruta;
+      const visor = "https://docs.google.com/gview?url=" + encodeURIComponent(urlCompleta) + "&embedded=true";
+      window.open(visor, "_blank");
+    }
   </script>
+
 </body>
 </html>
