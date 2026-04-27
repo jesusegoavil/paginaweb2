@@ -7,205 +7,324 @@
   <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
+
   <header>
     <div class="logo-nombre">
       <p class="universidad">Universidad Peruana Los Andes</p>
       <h1 class="nombre">Jesús Egoavil Machado</h1>
     </div>
     <nav class="menu">
-      <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a>
-      <a href="#" onclick="mostrarSeccion('tareas')">Tareas</a>
-      <a href="#" onclick="mostrarSeccion('parcial')">Parcial</a>
+      <a href="#" onclick="mostrarSeccion('inicio')" id="nav-inicio" class="active">Inicio</a>
+      <a href="#" onclick="mostrarSeccion('tareas')" id="nav-tareas">Tareas</a>
     </nav>
   </header>
 
   <div class="container">
 
-    <!-- Sección de Bienvenida -->
-    <section id="inicio" class="seccion">
+    <!-- ── INICIO ── -->
+    <section id="inicio" class="seccion active">
       <div class="bienvenida">
         <h2>Bienvenido</h2>
         <p>Hola, soy Jesús Egoavil Machado, estudiante de Ingeniería de Sistemas y Computación en la Universidad Peruana Los Andes (UPLA). Esta página contiene mis tareas semanales para consulta y descarga. ¡Gracias por visitar!</p>
       </div>
     </section>
 
-    <!-- Sección de Tareas -->
-    <section id="tareas" class="seccion" style="display: none;">
+    <!-- ── TAREAS ── -->
+    <section id="tareas" class="seccion">
       <h2>📚 Mis Tareas</h2>
 
-      <!-- Semanas 01 a 06 -->
-      <section id="primer-parte">
-        <h3>📘 Primera Parte (Semanas 01 a 06)</h3>
+      <div class="accordion">
 
-        <div class="semana">
-          <h4>📅 Semana 01</h4>
-          <a href="https://www.canva.com/design/DAGjh37ukPY/MzHNJTeMPH0zKxudSmZJfg/edit" target="_blank">👁️ Ver Documento</a>
-        </div>
-
-        <div class="semana">
-          <h4>📅 Semana 02</h4>
-          <a href="https://www.canva.com/design/DAGnfLqtzO8/0IwuPNOQxRXaf1nwmh4OHw/edit" target="_blank">👁️ Ver Documento</a>
-        </div>
-
-        <div class="semana">
-          <h4>📅 Semana 03</h4>
-          <a href="https://docs.google.com/spreadsheets/d/1pBVAdYDe_Jije_1IUAO7YLJ994ycCLcqDv8tEFynF6I/edit?usp=sharing" target="_blank">👁️ Ver Documento</a>
-        </div>
-
-        <div class="semana">
-          <h4>📅 Semana 04</h4>
-          <a href="https://www.canva.com/design/DAGnfLgS0sw/GyZI0Tyas3-sNfnl8NsbRg/edit" target="_blank">👁️ Ver Documento</a>
-        </div>
-
-        <div class="semana">
-          <h4>📅 Semana 05</h4>
-          <a href="https://docs.google.com/document/d/1KVs9Tq_eXkpS1V1orCkAST05p7E6MDx3Ktyq3MIgONo/edit?usp=sharing" target="_blank">👁️ Ver Documento</a>
-        </div>
-
-        <div class="semana">
-          <h4>📅 Semana 06</h4>
-          <a href="https://docs.google.com/document/d/1PAje0EQbTvrVPCar_gvmrWc6VY61ZpEtpAnU4o3TGzI/edit?usp=sharing" target="_blank">👁️ Ver Documento</a>
-        </div>
-      </section>
-
-      <!-- Segunda Parte -->
-      <section id="segunda-parte" style="margin-top: 2rem;">
-        <h3>📗 Segunda Parte (Semanas 10 a 15)</h3>
-
-        <!-- Semana 10 -->
-        <div class="semana">
-          <h4>📅 Semana 10</h4>
-          <div class="modulo">
-            <h5>Tarea 1</h5>
-            <a href="https://docs.google.com/document/d/18HJ2wuNvlSpRAKlEM6eK9i-CafHGxNthsIbc0C2B-AM/edit?usp=sharing" target="_blank">Ver</a>
-            <a href="tareas/Semana10.pdf" download>Descargar</a>
+        <!-- ══ UNIDAD 1 ══ -->
+        <div class="unidad">
+          <div class="unidad-header" onclick="toggleUnidad(this)">
+            <div class="unidad-left">
+              <span class="unidad-badge u1">Unidad 1</span>
+              <div>
+                <div class="unidad-name">Primera Unidad</div>
+                <div class="unidad-meta">Semanas 01 – 04</div>
+              </div>
+            </div>
+            <span class="chevron">▼</span>
           </div>
-          <div class="modulo">
-            <h5>Tarea 2</h5>
-            <a href="https://docs.google.com/document/d/ENLACE_EJEMPLO_TAREA2/edit?usp=sharing" target="_blank">Ver</a>
-            <a href="tareas/Semana10.1.pdf" download>Descargar</a>
-          </div>
-        </div>
+          <div class="unidad-body">
+            <div class="semanas-grid">
 
-        <!-- Semana 11 -->
-        <div class="semana">
-          <h4>📅 Semana 11</h4>
-          <a href="https://docs.google.com/document/d/15Ts1oM4JUITDamd-B_QEI6VARvgT6HWYsXLpnDVCaYM/edit?usp=sharing" target="_blank">Ver</a>
-          <a href="tareas/Semana11.pdf" download>Descargar</a>
-        </div>
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 01</span>
+                  <span class="semana-title">Semana 01</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGjh37ukPY/MzHNJTeMPH0zKxudSmZJfg/edit" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana01.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM01" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
 
-        <!-- Semana 12 -->
-        <div class="semana">
-          <h4>📅 Semana 12</h4>
-          <div class="modulo">
-            <h5>Módulo 1</h5>
-            <a href="https://docs.google.com/document/d/1PjjpTOyOClLO-CpWYFEQwcNjUghF8PRja2vZMHxKe3M/edit?usp=sharing" target="_blank">Ver</a>
-            <a href="tareas/Modulo1.pdf" download>Descargar</a>
-          </div>
-          <div class="modulo">
-            <h5>Módulo 2</h5>
-            <a href="https://docs.google.com/document/d/1FqEBD3HstEln2OmToLc3lTb3CXqteHMJlxuDANUooxA/edit?usp=sharing" target="_blank">Ver</a>
-            <a href="tareas/Modulo2.pdf" download>Descargar</a>
-          </div>
-          <div class="modulo">
-            <h5>Módulo 3</h5>
-            <a href="https://docs.google.com/document/d/1Jvwr_-tITqJctGYbbmXZz_1aMWsf-W78CiS0Ja42BO8/edit?usp=sharing" target="_blank">Ver</a>
-            <a href="tareas/Modulo3.pdf" download>Descargar</a>
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 02</span>
+                  <span class="semana-title">Semana 02</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGnfLqtzO8/0IwuPNOQxRXaf1nwmh4OHw/edit" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana02.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM02" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 03</span>
+                  <span class="semana-title">Semana 03</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://docs.google.com/spreadsheets/d/1pBVAdYDe_Jije_1IUAO7YLJ994ycCLcqDv8tEFynF6I/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana03.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM03" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 04</span>
+                  <span class="semana-title">Semana 04</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://www.canva.com/design/DAGnfLgS0sw/GyZI0Tyas3-sNfnl8NsbRg/edit" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana04.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM04" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
-        <!-- Semana 13 -->
-        <div class="semana">
-          <h4>📅 Semana 13</h4>
-          <div class="modulo">
-            <h5>Módulo 4</h5>
-            <a href="https://docs.google.com/presentation/d/1LlGv7CGVnDbIcrMuRFXA-p452YP1DkXvIPV3JNfYqoA/edit?usp=sharing" target="_blank">Ver</a>
-            <a href="tareas/Modulo4.pdf" download>Descargar</a>
+        <!-- ══ UNIDAD 2 ══ -->
+        <div class="unidad">
+          <div class="unidad-header" onclick="toggleUnidad(this)">
+            <div class="unidad-left">
+              <span class="unidad-badge u2">Unidad 2</span>
+              <div>
+                <div class="unidad-name">Segunda Unidad</div>
+                <div class="unidad-meta">Semanas 05 – 08</div>
+              </div>
+            </div>
+            <span class="chevron">▼</span>
           </div>
-          <div class="modulo">
-            <h5>Módulo 5</h5>
-            <a href="https://docs.google.com/presentation/d/1sQDy501wSI7GzO-qHtsXmScc1OcYcEikgsdhCscu1Jg/edit?usp=sharing" target="_blank">Ver</a>
-            <a href="tareas/Modulo5.pdf" download>Descargar</a>
+          <div class="unidad-body">
+            <div class="semanas-grid">
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 05</span>
+                  <span class="semana-title">Semana 05</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1KVs9Tq_eXkpS1V1orCkAST05p7E6MDx3Ktyq3MIgONo/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana05.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM05" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 06</span>
+                  <span class="semana-title">Semana 06</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1PAje0EQbTvrVPCar_gvmrWc6VY61ZpEtpAnU4o3TGzI/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana06.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM06" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 07</span>
+                  <span class="semana-title">Semana 07</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="TU_LINK_VER_SEM07" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana07.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM07" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 08</span>
+                  <span class="semana-title">Semana 08</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="TU_LINK_VER_SEM08" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana08.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM08" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
-        <!-- Semana 14 -->
-        <div class="semana">
-          <h4>📅 Semana 14</h4>
-          <div class="modulo">
-            <h5>Módulo 6</h5>
-            <a href="https://docs.google.com/presentation/d/1eSyNkOjoK1OUecdtn-BxaFAkKSGUPj0Xgxpfz-4B5Rk/edit?usp=sharing" target="_blank">Ver</a>
-            <a href="tareas/Modulo6.pdf" download>Descargar</a>
+        <!-- ══ UNIDAD 3 ══ -->
+        <div class="unidad">
+          <div class="unidad-header" onclick="toggleUnidad(this)">
+            <div class="unidad-left">
+              <span class="unidad-badge u3">Unidad 3</span>
+              <div>
+                <div class="unidad-name">Tercera Unidad</div>
+                <div class="unidad-meta">Semanas 09 – 12</div>
+              </div>
+            </div>
+            <span class="chevron">▼</span>
           </div>
-          <div class="modulo">
-            <h5>Módulo 7</h5>
-            <a href="LINK_SEMANA_14_MODULO_7_VER" target="_blank">Ver</a>
-            <a href="tareas/Modulo7.pdf" download>Descargar</a>
+          <div class="unidad-body">
+            <div class="semanas-grid">
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 09</span>
+                  <span class="semana-title">Semana 09</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="TU_LINK_VER_SEM09" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana09.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM09" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 10</span>
+                  <span class="semana-title">Semana 10</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://docs.google.com/document/d/18HJ2wuNvlSpRAKlEM6eK9i-CafHGxNthsIbc0C2B-AM/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana10.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM10" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 11</span>
+                  <span class="semana-title">Semana 11</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://docs.google.com/document/d/15Ts1oM4JUITDamd-B_QEI6VARvgT6HWYsXLpnDVCaYM/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana11.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM11" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 12</span>
+                  <span class="semana-title">Semana 12</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://docs.google.com/document/d/1PjjpTOyOClLO-CpWYFEQwcNjUghF8PRja2vZMHxKe3M/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana12.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM12" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
-        <!-- Semana 15 -->
-        <div class="semana">
-          <h4>📅 Semana 15</h4>
-          <div class="modulo">
-            <h5>Módulo 8</h5>
-            <a href="https://docs.google.com/presentation/d/12wPHYyp9g6TdCpjm1EgUprfaaoii1DucTpWtOzmVGGE/edit?usp=sharing" target="_blank">Ver</a>
-            <a href="tareas/Modulo8.pdf" download>Descargar</a>
+        <!-- ══ UNIDAD 4 ══ -->
+        <div class="unidad">
+          <div class="unidad-header" onclick="toggleUnidad(this)">
+            <div class="unidad-left">
+              <span class="unidad-badge u4">Unidad 4</span>
+              <div>
+                <div class="unidad-name">Cuarta Unidad</div>
+                <div class="unidad-meta">Semanas 13 – 16</div>
+              </div>
+            </div>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="unidad-body">
+            <div class="semanas-grid">
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 13</span>
+                  <span class="semana-title">Semana 13</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/1LlGv7CGVnDbIcrMuRFXA-p452YP1DkXvIPV3JNfYqoA/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana13.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM13" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 14</span>
+                  <span class="semana-title">Semana 14</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/1eSyNkOjoK1OUecdtn-BxaFAkKSGUPj0Xgxpfz-4B5Rk/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana14.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM14" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 15</span>
+                  <span class="semana-title">Semana 15</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="https://docs.google.com/presentation/d/12wPHYyp9g6TdCpjm1EgUprfaaoii1DucTpWtOzmVGGE/edit?usp=sharing" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana15.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM15" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+              <div class="semana-card">
+                <div class="semana-info">
+                  <span class="semana-num">SEM 16</span>
+                  <span class="semana-title">Semana 16</span>
+                </div>
+                <div class="semana-actions">
+                  <a class="btn btn-ver" href="TU_LINK_VER_SEM16" target="_blank">👁️ Ver PDF</a>
+                  <a class="btn btn-dl" href="tareas/Semana16.pdf" download>⬇️ Descargar</a>
+                  <a class="btn btn-yt" href="TU_LINK_YT_SEM16" target="_blank">▶ Ver Video</a>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
-      </section>
+
+      </div><!-- /accordion -->
     </section>
 
-    <!-- Sección de Parcial (separada de Tareas) -->
-    <section id="parcial" class="seccion" style="display: none;">
-      <h2>🧠 Exámenes Parciales</h2>
-      <div class="contenedor-parciales">
-        <div class="tarjeta sesion">
-          <h4>Examen Parcial 1</h4>
-          <a href="https://docs.google.com/document/d/1e_saeF5sdphafMwdXafGex1sOPhvvjeYtG4W_3e8284/edit?usp=sharing" target="_blank">👁️ Visualizar</a>
-          <a href="tareas/ejecicio 1.pdf" download>⬇️ Descargar</a>
-        </div>
-
-        <div class="tarjeta sesion">
-          <h4>Examen Parcial 2</h4>
-          <a href="https://docs.google.com/document/d/1JNqwam7vWRRVKKnISPCi6QQiT1WX4xMnR-lvQFE9VWw/edit?usp=sharing" target="_blank">👁️ Visualizar</a>
-          <a href="tareas/ejercicio 2.pdf" download>⬇️ Descargar</a>
-        </div>
-
-        <div class="tarjeta sesion">
-          <h4>Examen Parcial 3</h4>
-          <a href="https://docs.google.com/document/d/1LV6JzV5cLz0PgFb_HFDz3tetzSgt3SS1UvwlaGRaEf4/edit?usp=sharing" target="_blank">👁️ Visualizar</a>
-          <a href="tareas/sesion 3.pdf" download>⬇️ Descargar</a>
-        </div>
-
-        <div class="tarjeta sesion">
-          <h4>Examen Parcial 4</h4>
-          <a href="https://docs.google.com/document/d/149lwLzxRRA1_w-Q8Lrr-8aR7mJb5rpb_jIu0Gdiga24/edit?usp=sharing" target="_blank">👁️ Visualizar</a>
-          <a href="tareas/ejecicio 4.pdf" download>⬇️ Descargar</a>
-        </div>
-
-        <div class="tarjeta sesion">
-          <h4>Examen Parcial 5</h4>
-          <a href="https://docs.google.com/document/d/1PCaHLuCnkA4dykxoJH7FnWxjb8-wLEQhtmaqJT0HH4w/edit?usp=sharing" target="_blank">👁️ Visualizar</a>
-          <a href="tareas/solucion 5.pdf" download>⬇️ Descargar</a>
-        </div>
-
-        <div class="tarjeta sesion">
-          <h4>Examen Parcial 6</h4>
-          <a href="https://docs.google.com/document/d/19nQycTA1b8_qB4Q-jL_AGY7m8NQs6ByS7HJGBuY0vWs/edit?usp=sharing" target="_blank">👁️ Visualizar</a>
-          <a href="tareas/ejercicio 6.pdf" download>⬇️ Descargar</a>
-        </div>
-      </div>
-    </section>
-  </div>
+  </div><!-- /container -->
 
   <script>
     function mostrarSeccion(id) {
-      const secciones = document.querySelectorAll('.seccion');
-      secciones.forEach(seccion => {
-        seccion.style.display = 'none';
-      });
-      document.getElementById(id).style.display = 'block';
+      document.querySelectorAll('.seccion').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('nav.menu a').forEach(a => a.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.getElementById('nav-' + id).classList.add('active');
+    }
+
+    function toggleUnidad(header) {
+      const body = header.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.unidad-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.unidad-header').forEach(h => h.classList.remove('open'));
+      if (!isOpen) {
+        body.classList.add('open');
+        header.classList.add('open');
+      }
     }
   </script>
 </body>
