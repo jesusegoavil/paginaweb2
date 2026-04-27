@@ -1,10 +1,3 @@
-/* ── RESET ── */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 /* ── BASE ── */
 body {
     font-family: 'Times New Roman', Times, serif;
@@ -44,7 +37,6 @@ header {
     color: white;
 }
 
-/* ── NAV ── */
 .menu {
     display: flex;
     gap: 20px;
@@ -56,14 +48,11 @@ header {
     font-size: 1.2em;
     text-decoration: none;
     transition: color 0.3s;
-    padding: 6px 14px;
-    border-radius: 5px;
 }
 
 .menu a:hover,
 .menu a.active {
-    color: #1b5e20;
-    background-color: #c8e6c9;
+    color: #c8e6c9;
 }
 
 /* ── CONTAINER ── */
@@ -102,7 +91,6 @@ header {
     color: #1b5e20;
 }
 
-/* ── TÍTULOS DE SECCIÓN ── */
 .seccion h2 {
     border-bottom: 2px solid #4caf50;
     padding-bottom: 10px;
@@ -110,7 +98,9 @@ header {
     margin-bottom: 24px;
 }
 
-/* ── ACCORDION ── */
+/* ══════════════════════════════
+   ACCORDION - UNIDADES
+══════════════════════════════ */
 .accordion {
     display: flex;
     flex-direction: column;
@@ -120,20 +110,20 @@ header {
 .unidad {
     background-color: #1c1c1c;
     border: 1px solid #4caf50;
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
     transition: box-shadow 0.3s;
 }
 
 .unidad:hover {
-    box-shadow: 0 0 8px #4caf5066;
+    box-shadow: 0 0 10px #4caf50;
 }
 
 .unidad-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
+    padding: 15px 20px;
     cursor: pointer;
     user-select: none;
     transition: background-color 0.2s;
@@ -144,7 +134,7 @@ header {
 }
 
 .unidad-header.open {
-    background-color: #1b5e2033;
+    background-color: #1b3a1e;
     border-bottom: 1px solid #4caf50;
 }
 
@@ -155,18 +145,16 @@ header {
 }
 
 .unidad-badge {
-    font-size: 0.75em;
+    font-size: 0.78em;
     font-weight: bold;
-    padding: 4px 12px;
+    padding: 4px 14px;
     border-radius: 20px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    border: 1px solid #4caf50;
+    background-color: #2e7d32;
+    color: #c8e6c9;
 }
-
-.unidad-badge.u1 { background-color: #1b5e20; color: #c8e6c9; border: 1px solid #4caf50; }
-.unidad-badge.u2 { background-color: #1a3a5e; color: #bbdefb; border: 1px solid #64b5f6; }
-.unidad-badge.u3 { background-color: #3e2723; color: #ffccbc; border: 1px solid #ff8a65; }
-.unidad-badge.u4 { background-color: #4a1a6e; color: #e1bee7; border: 1px solid #ba68c8; }
 
 .unidad-name {
     font-size: 1.05em;
@@ -175,13 +163,13 @@ header {
 }
 
 .unidad-meta {
-    font-size: 0.78em;
+    font-size: 0.8em;
     color: #81c784;
     margin-top: 2px;
 }
 
 .chevron {
-    font-size: 0.85em;
+    font-size: 0.9em;
     color: #81c784;
     transition: transform 0.3s;
 }
@@ -190,10 +178,11 @@ header {
     transform: rotate(180deg);
 }
 
-/* ── CUERPO DEL ACCORDION ── */
+/* ── CUERPO ACCORDION ── */
 .unidad-body {
     display: none;
-    padding: 16px 20px;
+    padding: 15px 20px;
+    background-color: #111111;
 }
 
 .unidad-body.open {
@@ -209,21 +198,20 @@ header {
 }
 
 .semana-card {
-    background-color: #111111;
-    border: 1px solid #2e7d32;
+    background-color: #1c1c1c;
+    border: 1px solid #4caf50;
     border-radius: 6px;
-    padding: 12px 16px;
+    padding: 12px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    transition: border-color 0.2s, background-color 0.2s;
     flex-wrap: wrap;
+    transition: box-shadow 0.2s;
 }
 
 .semana-card:hover {
-    border-color: #66bb6a;
-    background-color: #161616;
+    box-shadow: 0 0 8px #4caf5066;
 }
 
 .semana-info {
@@ -233,11 +221,9 @@ header {
 }
 
 .semana-num {
-    font-size: 0.72em;
+    font-size: 0.75em;
     font-weight: bold;
     color: #81c784;
-    font-family: 'Courier New', monospace;
-    white-space: nowrap;
 }
 
 .semana-title {
@@ -255,22 +241,18 @@ header {
 
 .btn {
     display: inline-block;
-    padding: 7px 14px;
+    padding: 8px 15px;
     border-radius: 5px;
     font-weight: bold;
-    font-size: 0.82em;
+    font-size: 0.85em;
     text-decoration: none;
-    transition: background-color 0.3s, transform 0.15s;
+    color: white;
+    transition: background-color 0.3s;
     white-space: nowrap;
 }
 
-.btn:hover {
-    transform: translateY(-1px);
-}
-
 .btn-ver {
-    background-color: #2e7d32;
-    color: #ffffff;
+    background-color: #66bb6a;
 }
 
 .btn-ver:hover {
@@ -278,17 +260,15 @@ header {
 }
 
 .btn-dl {
-    background-color: #1565c0;
-    color: #ffffff;
+    background-color: #66bb6a;
 }
 
 .btn-dl:hover {
-    background-color: #1976d2;
+    background-color: #43a047;
 }
 
 .btn-yt {
-    background-color: #b71c1c;
-    color: #ffffff;
+    background-color: #c62828;
 }
 
 .btn-yt:hover {
@@ -303,21 +283,8 @@ header {
         gap: 12px;
         align-items: flex-start;
     }
-
-    .nombre {
-        font-size: 1.8em;
-    }
-
-    .semana-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .unidad-header {
-        padding: 14px 16px;
-    }
-
-    .unidad-body {
-        padding: 12px 16px;
-    }
+    .nombre { font-size: 1.8em; }
+    .semana-card { flex-direction: column; align-items: flex-start; }
+    .unidad-header { padding: 12px 14px; }
+    .unidad-body { padding: 12px 14px; }
 }
