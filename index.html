@@ -850,10 +850,9 @@
     }
 
     function verPDF(ruta) {
-      const urlCompleta = window.location.origin + "/" + ruta;
-      const visor = "https://docs.google.com/gview?url=" + encodeURIComponent(urlCompleta) + "&embedded=true";
-      window.open(visor, "_blank");
-    }
+    const urlCompleta = window.location.origin + "/" + ruta;
+    window.open(urlCompleta, "_blank");
+  }
   </script>
 
 </body>
