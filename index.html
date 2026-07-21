@@ -353,7 +353,7 @@
     .icon-yt  { width:13px; height:13px; fill:currentColor; }
 
     /* ══════════════════════════════════════
-       TARJETAS DE CONTENIDO (sem 06-12)
+       TARJETAS DE CONTENIDO (sem 06-16)
     ══════════════════════════════════════ */
     .semana-content-card {
       background: var(--surface2);
@@ -433,6 +433,7 @@
 
     .u2-icon { background: rgba(124,92,252,0.08); border-color: rgba(124,92,252,0.25); }
     .u3-icon { background: rgba(62,207,142,0.08); border-color: rgba(62,207,142,0.25); }
+    .u4-icon { background: rgba(240,180,41,0.08); border-color: rgba(240,180,41,0.25); }
 
     .semana-texto {
       padding: 1.25rem 1.25rem 1.25rem 0;
@@ -456,6 +457,7 @@
 
     .tag-u2 { background: rgba(124,92,252,0.15); color: var(--accent2); border: 1px solid rgba(124,92,252,0.3); }
     .tag-u3 { background: rgba(62,207,142,0.15); color: var(--accent3); border: 1px solid rgba(62,207,142,0.3); }
+    .tag-u4 { background: rgba(240,180,41,0.15); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
 
     .tema-titulo {
       font-size: 0.95rem;
@@ -496,6 +498,7 @@
     }
 
     .u3-li::before { color: var(--accent3) !important; }
+    .u4-li::before { color: var(--gold) !important; }
 
     @media (max-width: 640px) {
       header { padding: 1rem 1.2rem; flex-direction: column; gap: 0.8rem; align-items: flex-start; }
@@ -936,91 +939,119 @@
           <div class="unidad-body">
             <div class="semanas-grid">
 
-              <!-- Semana 13 -->
-              <div class="semana-card">
-                <div class="semana-info">
+              <!-- ════ Semana 13 — CONTENIDO ════ -->
+              <div class="semana-content-card">
+                <div class="semana-content-header">
                   <span class="semana-num">SEM 13</span>
-                  <span class="semana-title">Semana 13</span>
+                  <span class="semana-title">Ciclo de Vida y Metodología del Desarrollo de Sistemas</span>
                 </div>
-                <div class="semana-actions">
-                  <a class="btn btn-ver" href="tareas/Semana13.pdf" target="_blank">
-                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                    Ver 
-                  </a>
-                  <a class="btn btn-dl" href="tareas/Semana13.pdf" download>
-                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Descargar
-                  </a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM13" target="_blank">
-                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
-                    Ver Video
-                  </a>
+                <div class="semana-content-body">
+                  <div class="semana-img-wrap">
+                    <div class="semana-icon-placeholder u4-icon">
+                      🔄
+                      <span class="label">SDLC</span>
+                    </div>
+                  </div>
+                  <div class="semana-texto">
+                    <span class="tema-tag tag-u4">Unidad 4 · Sem 13</span>
+                    <p class="tema-titulo">El Ciclo de Vida del Desarrollo de Sistemas y su Metodología</p>
+                    <p class="tema-desc">
+                      El <strong>ciclo de vida del desarrollo de sistemas (SDLC)</strong> organiza en fases sucesivas la construcción de un sistema de información, mientras que la metodología define las técnicas y herramientas que garantizan calidad y consistencia en cada etapa.
+                    </p>
+                    <ul class="puntos-lista u4-li">
+                      <li><strong>Ciclo de vida del desarrollo de sistemas:</strong> Conjunto de fases secuenciales —planificación, análisis, diseño, implementación y mantenimiento— que guían la creación de un sistema.</li>
+                      <li><strong>Metodología para el Desarrollo de Sistemas de Información:</strong> Procedimientos estructurados (cascada, incremental, ágil) que aseguran orden y control durante el desarrollo.</li>
+                      <li><strong>Fases principales:</strong> Identificación de requerimientos, análisis, diseño, construcción, pruebas y puesta en producción.</li>
+                      <li><strong>Importancia:</strong> Reduce riesgos, controla costos y tiempos, y garantiza que el sistema cumpla los objetivos del negocio.</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              <!-- Semana 14 -->
-              <div class="semana-card">
-                <div class="semana-info">
+              <!-- ════ Semana 14 — CONTENIDO ════ -->
+              <div class="semana-content-card">
+                <div class="semana-content-header">
                   <span class="semana-num">SEM 14</span>
-                  <span class="semana-title">Semana 14</span>
+                  <span class="semana-title">Implementación de Sistemas de Información</span>
                 </div>
-                <div class="semana-actions">
-                  <a class="btn btn-ver" href="tareas/Semana14.pdf" target="_blank">
-                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                    Ver 
-                  </a>
-                  <a class="btn btn-dl" href="tareas/Semana14.pdf" download>
-                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Descargar
-                  </a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM14" target="_blank">
-                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
-                    Ver Video
-                  </a>
+                <div class="semana-content-body">
+                  <div class="semana-img-wrap">
+                    <div class="semana-icon-placeholder u4-icon">
+                      ⚙️
+                      <span class="label">Implementación</span>
+                    </div>
+                  </div>
+                  <div class="semana-texto">
+                    <span class="tema-tag tag-u4">Unidad 4 · Sem 14</span>
+                    <p class="tema-titulo">Implementación de Sistemas de Información</p>
+                    <p class="tema-desc">
+                      La <strong>implementación</strong> es la fase donde el sistema pasa de ser un diseño a una solución funcionando dentro de la organización, involucrando instalación, configuración, capacitación y puesta en marcha.
+                    </p>
+                    <ul class="puntos-lista u4-li">
+                      <li><strong>Implementación de sistemas de información:</strong> Proceso de instalar, configurar y poner en funcionamiento un sistema dentro de la organización.</li>
+                      <li><strong>Estrategias de implementación:</strong> Directa, en paralelo, piloto o por fases, según el nivel de riesgo que la organización esté dispuesta a asumir.</li>
+                      <li><strong>Capacitación de usuarios:</strong> Fundamental para garantizar la correcta adopción del sistema por parte del personal.</li>
+                      <li><strong>Migración de datos:</strong> Transferencia segura de la información desde los sistemas anteriores hacia el nuevo sistema.</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              <!-- Semana 15 -->
-              <div class="semana-card">
-                <div class="semana-info">
+              <!-- ════ Semana 15 — CONTENIDO ════ -->
+              <div class="semana-content-card">
+                <div class="semana-content-header">
                   <span class="semana-num">SEM 15</span>
-                  <span class="semana-title">Semana 15</span>
+                  <span class="semana-title">Elaboración y Exposición de un Proyecto Práctico</span>
                 </div>
-                <div class="semana-actions">
-                  <a class="btn btn-ver" href="tareas/Semana15.pdf" target="_blank">
-                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                    Ver 
-                  </a>
-                  <a class="btn btn-dl" href="tareas/Semana15.pdf" download>
-                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Descargar
-                  </a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM15" target="_blank">
-                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
-                    Ver Video
-                  </a>
+                <div class="semana-content-body">
+                  <div class="semana-img-wrap">
+                    <div class="semana-icon-placeholder u4-icon">
+                      📊
+                      <span class="label">Proyecto</span>
+                    </div>
+                  </div>
+                  <div class="semana-texto">
+                    <span class="tema-tag tag-u4">Unidad 4 · Sem 15</span>
+                    <p class="tema-titulo">Elaboración y Exposición de un Proyecto Práctico de Sistemas de Información en una Empresa</p>
+                    <p class="tema-desc">
+                      Esta semana aplica todo lo aprendido en el curso a través del diseño de un <strong>proyecto práctico</strong> de sistemas de información para una empresa real, culminando con su exposición y sustentación.
+                    </p>
+                    <ul class="puntos-lista u4-li">
+                      <li><strong>Elaboración de un proyecto práctico:</strong> Aplicación de los conocimientos adquiridos para diseñar un sistema de información real para una empresa.</li>
+                      <li><strong>Análisis de la organización:</strong> Identificación de necesidades, procesos y problemáticas de la empresa seleccionada.</li>
+                      <li><strong>Diseño de la solución:</strong> Propuesta de arquitectura, módulos y funcionalidades del sistema de información.</li>
+                      <li><strong>Exposición del proyecto:</strong> Presentación oral y sustentación de la propuesta ante el docente y compañeros, argumentando la solución planteada.</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              <!-- Semana 16 -->
-              <div class="semana-card">
-                <div class="semana-info">
+              <!-- ════ Semana 16 — CONTENIDO ════ -->
+              <div class="semana-content-card">
+                <div class="semana-content-header">
                   <span class="semana-num">SEM 16</span>
-                  <span class="semana-title">Semana 16</span>
+                  <span class="semana-title">Sustentación Final y Cierre del Curso</span>
                 </div>
-                <div class="semana-actions">
-                  <a class="btn btn-ver" href="tareas/Semana16.pdf" target="_blank">
-                    <svg class="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                    Ver 
-                  </a>
-                  <a class="btn btn-dl" href="tareas/Semana16.pdf" download>
-                    <svg class="icon-dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Descargar
-                  </a>
-                  <a class="btn btn-yt" href="TU_LINK_YT_SEM16" target="_blank">
-                    <svg class="icon-yt" viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.39.57A3 3 0 00.5 6.19C0 7.99 0 12 0 12s0 4.01.5 5.81a3 3 0 002.11 2.12C4.4 20.5 12 20.5 12 20.5s7.6 0 9.39-.57a3 3 0 002.11-2.12C24 16.01 24 12 24 12s0-4.01-.5-5.81zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
-                    Ver Video
-                  </a>
+                <div class="semana-content-body">
+                  <div class="semana-img-wrap">
+                    <div class="semana-icon-placeholder u4-icon">
+                      🎓
+                      <span class="label">Sustentación</span>
+                    </div>
+                  </div>
+                  <div class="semana-texto">
+                    <span class="tema-tag tag-u4">Unidad 4 · Sem 16</span>
+                    <p class="tema-titulo">Sustentación Final del Proyecto y Cierre del Curso</p>
+                    <p class="tema-desc">
+                      Semana de cierre en la que se realiza la <strong>sustentación final</strong> del proyecto práctico y se consolidan los aprendizajes del curso sobre la gerencia de sistemas de información y sus componentes esenciales.
+                    </p>
+                    <ul class="puntos-lista u4-li">
+                      <li><strong>Sustentación final del proyecto:</strong> Exposición y defensa del proyecto práctico de sistemas de información desarrollado durante el curso.</li>
+                      <li><strong>Retroalimentación docente:</strong> Evaluación de la propuesta, identificando fortalezas y oportunidades de mejora.</li>
+                      <li><strong>Conclusiones del curso:</strong> Análisis de los fundamentos de la gerencia de sistemas de información y sus componentes esenciales (procesos, tecnologías, datos y recursos de información).</li>
+                      <li><strong>Valores aplicados:</strong> Respeto, trabajo en equipo, excelencia académica y emprendedurismo durante el desarrollo del proyecto.</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
